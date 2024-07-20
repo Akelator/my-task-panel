@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--btn-h);
+  border-radius: 100%;
+  transition: calc(var(--tran) * 0.5);
+
+  &:hover {
+    transform: scale(0.9);
+    background-color: var(--btn-h-h);
+  }
+
+  svg {
+    fill: var(--btn-h-text);
+  }
+}

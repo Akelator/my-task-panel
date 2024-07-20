@@ -1,0 +1,22 @@
+<div class="backdrop"
+     [class.active]="active"></div>
+<div class="add-task"
+     [class.active]="active">
+  <label for="link"
+         [class.error]="invalidLink()">Link</label>
+  <input [(ngModel)]="link"
+         id="link"
+         type="text"
+         [class.error]="invalidLink()">
+  <label for="info">Name</label>
+  <input [(ngModel)]="name"
+         id="info"
+         type="text">
+  <div class="actions">
+    <button class="yes"
+            [class.unvalid]="!valid()"
+            (click)="onAddTask()">Create</button>
+    <button class="nop"
+            (click)="onToggle(false)">Close</button>
+  </div>
+</div>

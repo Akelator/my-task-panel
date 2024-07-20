@@ -1,0 +1,31 @@
+<new-task></new-task>
+<edit-task></edit-task>
+<div class="head">
+  <ng-container *ngFor="let filter of filters()">
+    <button *ngIf="!filter.hidden && !!count(filter.state)"
+            class="filter"
+            [ngClass]="filter.state"
+            [class.visible]="filter.visible"
+            (click)="onFilter(filter)"><span>{{count(filter.state)}} {{filter.state | uppercase}}</span></button>
+  </ng-container>
+  <btn-clear *ngIf="!!countRemoved() "
+             (click)="onClearRemovedTasks()"
+             [class.visible]="removedAreVisible()"></btn-clear>
+  <div class="flex-grow"></div>
+  <div class="actions">
+    <search></search>
+    <button class="sort"
+            (click)="onSortByState()">Sort</button>
+    <btn-plus (click)="onOpenNewTaskDialog()"></btn-plus>
+    <btn-load (click)="onUploadTasks()"
+              class="upload"></btn-load>
+    <btn-load (click)="onDownloadTasks()"></btn-load>
+  </div>
+</div>
+<panel class="panel"
+       (editTask)="onEditTask($event)"></panel>
+<input type="file"
+       #fileInput
+       style="display: none;"
+       (change)="onFileSelected($event)"
+       accept=".json">

@@ -1,0 +1,7 @@
+<div class="task-list">
+  <ng-container *ngFor="let task of tasks()">
+    <task [task]="task"
+          [class.unvisible]="!visible(task)"
+          (edit)="onEditTask(task)"></task>
+  </ng-container>
+</div>

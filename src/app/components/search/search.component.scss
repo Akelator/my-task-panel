@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  width: 300px;
+  position: relative;
+  margin-left: 0px !important;
+  margin-right: 2px;
+
+  .search-action {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    &.focused {
+      pointer-events: all;
+      cursor: pointer;
+
+      &:hover svg {
+        fill: var(--btn-h-h);
+      }
+    }
+
+    svg {
+      transition: var(--tran);
+      fill: var(--btn-h);
+    }
+  }
+
+  label {
+    display: none;
+  }
+
+  input {
+    color: var(--btn-h-h);
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(var(--pad) * 2 - 6px);
+    border: 1px solid var(--btn-h);
+    outline: none !important;
+    font-size: var(--text-size);
+    background-color: var(--bg);
+    transition: var(--tran);
+    padding: 0 30px 0 10px;
+    border-radius: var(--corner);
+  }
+}

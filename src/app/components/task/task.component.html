@@ -1,0 +1,39 @@
+<div class="task-container"
+     [ngClass]="task.state">
+  <div class="task-content task-bg"
+       [ngClass]="task.state"></div>
+  <div class="task-content">
+    <div class="task-header">
+      <div class="task-state"
+           [ngClass]="task.state"
+           (click)="onClipboard()">
+        {{ task.state | uppercase }}
+      </div>
+      <div class="task-code"
+           [title]="task.name"
+           (click)="onClipboardCode()">
+        {{ task.code }}
+      </div>
+      <div class="task-info"
+           (click)="onClipboard(true)">
+        <span>{{ task.name }}</span>
+      </div>
+      <div class="task-btns">
+        <ng-container *ngIf="!removed()">
+          <btn-next *ngIf="active()"
+                    (click)="onChangeState()"></btn-next>
+          <btn-review (click)="onReviewTask()"></btn-review>
+
+          <btn-visible (click)="onHideTask()"
+                       [hidden]="hidden()"></btn-visible>
+        </ng-container>
+        <btn-link (click)="onNavigateToTask()"></btn-link>
+        <btn-edit class="edit"
+                  (click)="onEdit()"></btn-edit>
+        <btn-remove class="remove"
+                    (click)="onRemoveTask()"
+                    [removed]="removed()"></btn-remove>
+      </div>
+    </div>
+  </div>
+</div>

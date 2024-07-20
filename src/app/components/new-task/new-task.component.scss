@@ -1,0 +1,92 @@
+:host {
+  --w: 600px;
+  --h: 290px;
+  pointer-events: none;
+
+  .backdrop {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--back);
+
+  }
+
+  .add-task {
+    position: fixed;
+    width: var(--w);
+    height: var(--h);
+    background-color: var(--bg);
+    padding: calc(var(--pad) * 2);
+    top: calc(50vh - calc(var(--h) / 2));
+    left: calc(50vw - calc(var(--w) / 2));
+    box-shadow: var(--shadow);
+    border-radius: var(--corner);
+    display: flex;
+    flex-flow: column;
+
+    .actions {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: calc(var(--pad)/ 2);
+
+      button {
+        margin-left: var(--pad);
+      }
+    }
+  }
+
+  .backdrop,
+  .add-task {
+    pointer-events: none;
+    transition: var(--tran);
+    opacity: 0;
+
+    &:not(.backdrop) {
+      transform: scale(0);
+    }
+
+    &.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: all;
+    }
+  }
+}
+
+.add-task {
+  border: 1px solid var(--scroll-c);
+
+  label {
+    height: var(--pad);
+    transition: var(--tran);
+
+    &.error {
+      color: var(--error)
+    }
+  }
+
+  input {
+    color: var(--text-000);
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--input-h);
+    outline: none !important;
+    font-size: var(--text-size);
+    background-color: var(--bg);
+    transition: var(--tran);
+    padding: var(--input-pad);
+    border: 1px solid var(--btn-h);
+
+    &:focus,
+    &:hover {
+      border: 1px solid var(--btn-h-h);
+    }
+
+    margin-bottom: calc(var(--pad));
+
+    &.error {
+      border: 1px solid var(--btn-nop);
+      color: var(--error)
+    }
+  }
+}

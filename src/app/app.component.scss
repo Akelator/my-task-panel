@@ -1,0 +1,160 @@
+:host {
+  --scroll-s: 5px;
+  --scroll-c: rgb(85, 85, 85);
+
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: var(--bg);
+  padding: 0px;
+  overflow: hidden;
+
+  new-task,
+  edit-task {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1000001;
+  }
+
+
+  .head {
+    height: calc(var(--pad) * 4);
+    min-height: calc(var(--pad) * 4);
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: calc(var(--pad));
+    padding-bottom: calc(var(--pad) - 2px);
+
+    padding-right: calc(var(--pad) * 2);
+    padding-left: calc(var(--pad) * 2);
+    border-bottom: 1px solid var(--scroll-c);
+
+    .flex-grow {
+      flex-grow: 1;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+
+      >* {
+        margin-left: 14px;
+      }
+    }
+
+    btn-clear {
+      margin-right: 10px;
+    }
+  }
+}
+
+:host::ng-deep .upload svg {
+  transform: rotate(180deg);
+}
+
+
+button.filter {
+  width: 130px;
+  min-width: 40px;
+  height: calc(var(--pad) * 2 - 6px);
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  span {
+    font-size: 12px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &.todo {
+    background-color: var(--todo-0);
+    border: 1px solid var(--new-1) !important;
+  }
+
+  &.progress {
+    background-color: var(--progress-0);
+    border: 1px solid var(--progress-1) !important;
+  }
+
+  &.done {
+    background-color: var(--done-0);
+    border: 1px solid var(--done-1) !important;
+  }
+
+  &.review {
+    background-color: var(--review-0);
+    border: 1px solid var(--review-1) !important;
+  }
+
+  &.hidden {
+    background-color: var(--hidden-0);
+    border: 1px solid var(--hidden-1) !important;
+  }
+
+  &.remove {
+    background-color: var(--remove-0);
+    border: 1px solid var(--remove-1) !important;
+  }
+
+  &:not(.visible) {
+    &:not(:hover) {
+      opacity: 0.4;
+    }
+
+    &.todo {
+      color: var(--new-1) !important;
+      border: 1px solid var(--todo-0) !important;
+    }
+
+    &.progress {
+      color: var(--progress-1) !important;
+      border: 1px solid var(--progress-0) !important;
+    }
+
+    &.done {
+      color: var(--done-1) !important;
+      border: 1px solid var(--done-0) !important;
+    }
+
+    &.review {
+      color: var(--review-1) !important;
+      border: 1px solid var(--review-0) !important;
+    }
+
+    &.hidden {
+      color: var(--hidden-1) !important;
+      border: 1px solid var(--hidden-0) !important;
+    }
+
+    &.remove {
+      color: var(--remove-1) !important;
+      border: 1px solid var(--remove-0) !important;
+    }
+  }
+
+}
+
+button.sort {
+  background-color: var(--btn-h);
+  color: var(--btn-h-text);
+  height: calc(var(--pad) * 2 - 6px);
+  padding-left: 10px;
+  padding-right: 10px;
+
+  &:hover {
+    background-color: var(--btn-h-h);
+    opacity: 1;
+    transform: scale(0.9);
+  }
+}

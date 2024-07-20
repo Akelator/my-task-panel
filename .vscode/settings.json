@@ -1,0 +1,36 @@
+{
+  "search.exclude": {
+    "**/dist/**": true
+  },
+  "javascript.preferences.autoImportFileExcludePatterns": [
+    "**/dist/**"
+  ],
+  "files.watcherExclude": {
+    "**/dist/**": true
+  },
+  "csharp.debug.symbolOptions.moduleFilter.excludedModules": [
+    "**/dist/**"
+  ],
+  "explorer.autoRevealExclude": {
+    "**/dist/**": true
+  },
+  "npm.exclude": "**/dist/**",
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "**/dist/**"
+  ],
+  "npm.scriptExplorerExclude": [
+    "**/dist/**"
+  ],
+  "todohighlight.exclude": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/_output/**",
+    "**/*.min.*",
+    "**/*.map",
+    "**/.next/**"
+  ]
+}

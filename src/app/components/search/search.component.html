@@ -1,0 +1,46 @@
+<label for="search">Name</label>
+<input #input
+       [(ngModel)]="filter.searchText"
+       id="search"
+       type="text">
+<div class="search-action"
+     [class.focused]="searching()"
+     (click)="onClearSearch()">
+  <ng-container *ngIf="!searching()">
+    <svg version="1.1"
+         id="Capa_1"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         x="0px"
+         y="0px"
+         width="18px"
+         height="18px"
+         viewBox="0 0 24 24"
+         enable-background="new 0 0 24 24"
+         xml:space="preserve">
+      <path d="M23.681,23.687c0.343-0.368,0.343-0.956,0-1.298l-6.811-6.812c1.348-1.643,2.181-3.749,2.181-6.027
+	c0-5.244-4.264-9.506-9.506-9.506c-5.243,0-9.482,4.263-9.482,9.506c0,5.243,4.239,9.482,9.482,9.482
+	c2.278,0,4.385-0.81,6.028-2.156l6.811,6.811c0.171,0.172,0.393,0.27,0.636,0.27C23.265,23.956,23.485,23.858,23.681,23.687z
+	 M17.213,9.55c0,4.213-3.455,7.644-7.668,7.644C5.33,17.194,1.9,13.764,1.9,9.55c0-4.215,3.43-7.669,7.644-7.669
+	C13.758,1.881,17.213,5.335,17.213,9.55z" />
+    </svg>
+  </ng-container>
+  <ng-container *ngIf="searching()">
+    <svg version="1.1"
+         id="Capa_1"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         x="0px"
+         y="0px"
+         width="12px"
+         height="12px"
+         viewBox="0 0 24 24"
+         enable-background="new 0 0 24 24"
+         xml:space="preserve">
+      <path d="M22.605,0.071c-0.346,0-0.692,0.124-0.939,0.396l-9.674,9.648L2.319,0.442c-0.52-0.495-1.361-0.495-1.855,0
+   s-0.52,1.36,0,1.88l9.648,9.673l-9.648,9.673c-0.52,0.52-0.52,1.361,0,1.88c0.52,0.52,1.336,0.494,1.855,0l9.673-9.674l9.674,9.674
+   c0.519,0.494,1.36,0.494,1.88,0c0.52-0.495,0.495-1.36,0-1.88l-9.673-9.673l9.673-9.673c0.495-0.52,0.495-1.36,0-1.88
+   C23.274,0.195,22.928,0.071,22.605,0.071z" />
+    </svg>
+  </ng-container>
+</div>

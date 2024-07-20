@@ -1,0 +1,90 @@
+:root {
+  --pad: 20px;
+  --shadow: 0px 3px 10px 2px rgba(0, 0, 0, 0.2);
+  --corner: 4px;
+  --input-h: 40px;
+  --tran: 200ms;
+  --opacity-h: 0.8;
+
+  --bg: #161616;
+
+  --text-size: 14px;
+
+  --text-000: #505050;
+  --text-000: #FFFFFF;
+  --text-900: #FFFFFF;
+
+  --input-b: #585858;
+  --input-b-f: var(--btn-yes);
+  --input-pad: 0px 12px;
+
+  --back: #000000D0;
+
+  --progress-0: hsl(212, 80%, 20%);
+  --todo-0: hsl(182, 70%, 15%);
+  --done-0: hsl(120, 50%, 15%);
+  --review-0: hsl(49, 100%, 15%);
+  --remove-0: hsl(0, 100%, 15%);
+  --hidden-0: hsl(305, 80%, 15%);
+
+  --progress-1: hsl(212, 100%, 80%);
+  --new-1: hsl(182, 100%, 80%);
+  --done-1: hsl(120, 100%, 80%);
+  --review-1: hsl(49, 100%, 80%);
+  --remove-1: hsl(0, 100%, 80%);
+  --hidden-1: hsl(305, 100%, 80%);
+
+  --btn-yes: #1d7444;
+  --btn-nop: #b63434;
+  --error: #e73b3b;
+  --btn-h: #a5a5a5;
+  --btn-h-h: #dddddd;
+  --btn-h-text: #363636;
+}
+
+body,
+html {
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  box-sizing: border-box;
+  color: var(--text-000);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1px;
+  font-size: var(--text-size);
+}
+
+button {
+  outline: none !important;
+  border: 0 !important;
+  width: fit-content;
+  height: var(--input-h);
+  cursor: pointer;
+  color: var(--text-900);
+  font-weight: 900;
+  transition: var(--tran);
+  font-size: var(--text-size);
+  padding: var(--input-pad);
+  border-radius: var(--corner);
+
+  &.yes {
+    background-color: var(--btn-yes);
+  }
+
+  &.nop {
+    background-color: var(--btn-nop);
+  }
+
+  &.unvalid {
+    background-color: var(--input-b);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:hover {
+    opacity: var(--opacity-h);
+  }
+}

@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  width: calc(var(--pad) * 1.5);
+  min-width: calc(var(--pad) * 1.5);
+  height: calc(var(--pad) * 1.5);
+
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    transition: calc(var(--tran) * 0.5);
+    fill: var(--text-000);
+    opacity: 0.7;
+  }
+
+  &:hover {
+    svg {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  }
+}

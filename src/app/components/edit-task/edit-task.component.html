@@ -1,0 +1,18 @@
+<div class="backdrop"
+     [class.active]="active"></div>
+<div class="add-task"
+     [class.active]="active">
+  <ng-container *ngIf="!!task">
+    <label for="name">Name</label>
+    <input [(ngModel)]="task.name"
+           id="name"
+           type="text">
+  </ng-container>
+  <div class="actions">
+    <button class="yes"
+            [class.unvalid]="!valid()"
+            (click)="onEditTask()">Save</button>
+    <button class="nop"
+            (click)="onToggle(false)">Close</button>
+  </div>
+</div>
