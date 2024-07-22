@@ -56,6 +56,7 @@ export class TaskComponent {
   }
 
   onNavigateToTask(): void {
+    navigator.clipboard.writeText(this.task.link);
     window.open(this.task.link);
   }
 
