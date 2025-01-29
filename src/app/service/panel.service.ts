@@ -2,7 +2,7 @@ import { Injectable, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject } from 'rxjs';
 
-import { PanelTask, STORE_ID, TaskSort, TaskState } from '../model/task.mode';
+import { PanelTask, Priority, STORE_ID, TaskSort, TaskState } from '../model/task.mode';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +33,7 @@ export class PanelService {
 
   private addTask(link: string, code: string, name: string): void {
     const tasks: PanelTask[] = this._tasks.value || [];
-    const newTask: PanelTask = { link, code, name, state: TaskState.NEW };
+    const newTask: PanelTask = { link, code, name, state: TaskState.NEW, priority: Priority.LOW };
     const newTasks: PanelTask[] = [newTask, ...tasks];
     this.updateTasks(newTasks);
   }
@@ -118,7 +118,10 @@ export class PanelService {
       const bKey: string = Object.keys(TaskSort).find((key: string) => key == b.state);
       const sA: TaskSort = TaskSort[aKey];
       const sB: TaskSort = TaskSort[bKey];
-      return sA === sB ? collator.compare(a.code, b.code) : sA > sB ? 1 : -1;
+      const prioA: number = a.priority || Priority.LOW;
+      const prioB: number = b.priority || Priority.LOW;
+      const scndSort: number = prioA === prioB ? collator.compare(a.code, b.code) : prioA > prioB ? 1 : -1;
+      return sA === sB ? scndSort : sA > sB ? 1 : -1;
     });
     this.updateTasks();
   }

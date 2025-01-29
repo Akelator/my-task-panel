@@ -19,11 +19,18 @@ export enum TaskSort {
   remove = 6,
 }
 
+export enum Priority {
+  LOW = 3,
+  MID = 2,
+  HIG = 1,
+}
+
 export interface PanelTask {
   link: string;
   code: string;
   name: string;
   state: TaskState;
+  priority: Priority;
 }
 
 export interface PanelFilter {

@@ -23,7 +23,6 @@
           <btn-next *ngIf="active()"
                     (click)="onChangeState()"></btn-next>
           <btn-review (click)="onReviewTask()"></btn-review>
-
           <btn-visible (click)="onHideTask()"
                        [hidden]="hidden()"></btn-visible>
         </ng-container>
@@ -33,6 +32,11 @@
         <btn-remove class="remove"
                     (click)="onRemoveTask()"
                     [removed]="removed()"></btn-remove>
+        <div class="priority"
+             [ngClass]="'p-' + priority()"
+             (click)="onChangePriority()">
+          {{ priority() }}
+        </div>
       </div>
     </div>
   </div>

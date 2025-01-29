@@ -83,7 +83,7 @@
       }
 
       .task-info {
-        width: calc(100% - 436px);
+        width: calc(100% - 450px);
         height: 100%;
         display: flex;
         align-items: center;
@@ -102,9 +102,9 @@
 
       .task-btns {
         display: flex;
-        width: 206;
-        min-width: 206px;
-        max-width: 206px;
+        width: 220px;
+        min-width: 220px;
+        max-width: 220px;
         justify-content: flex-end;
 
         >* {
@@ -212,4 +212,28 @@
     }
   }
 
+}
+
+.priority {
+  display: flex;
+  width: calc(var(--pad) * 0.8);
+  min-width: calc(var(--pad) * 0.8);
+  height: calc(var(--pad) * 1.5);
+  align-items: center;
+  justify-content: center;
+  color: var(--text-000);
+  transition: var(--tran);
+  line-height: calc(var(--pad) * 1.5);
+
+  &.p-1 {
+    opacity: 1;
+  }
+
+  &.p-2 {
+    opacity: 0.5;
+  }
+
+  &.p-3 {
+    opacity: 0.25;
+  }
 }

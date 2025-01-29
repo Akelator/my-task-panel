@@ -1,5 +1,5 @@
 import { Component, computed, EventEmitter, Input, Output, Signal } from '@angular/core';
-import { PanelTask, TaskState } from 'src/app/model/task.mode';
+import { PanelTask, Priority, TaskState } from 'src/app/model/task.mode';
 import { PanelService } from 'src/app/service/panel.service';
 
 @Component({
@@ -12,6 +12,10 @@ export class TaskComponent {
   @Output() edit = new EventEmitter<void>();
 
   constructor(private service: PanelService) {}
+
+  get priority(): Signal<Priority> {
+    return computed(() => this.task.priority || Priority.LOW);
+  }
 
   get review(): Signal<boolean> {
     return computed(() => this.task.state === TaskState.REVIEW);
@@ -72,5 +76,13 @@ export class TaskComponent {
 
   onEdit(): void {
     this.edit.emit();
+  }
+
+  onChangePriority(): void {
+    let newPriority: Priority = Priority.LOW;
+    if (this.priority() === Priority.LOW) newPriority = Priority.MID;
+    if (this.priority() === Priority.MID) newPriority = Priority.HIG;
+    this.task.priority = newPriority;
+    this.service.updateTasks();
   }
 }
