@@ -1,4 +1,5 @@
 export enum TaskState {
+  PANEL_ID = 'panel_id',
   NEW = 'new',
   HIDDEN = 'hidden',
   REVIEW = 'review',
@@ -29,6 +30,7 @@ export interface PanelFilter {
   state: TaskState;
   visible: boolean;
   hidden?: boolean;
+  panelId?: boolean;
 }
 
 export const PANEL_FILTERS: PanelFilter[] = [

@@ -1,12 +1,21 @@
 <new-task></new-task>
 <edit-task></edit-task>
+<edit-panel-id></edit-panel-id>
 <div class="head">
+  <button class="filter visible panel-id"
+          (click)="onEditPanelId()">
+    <span>{{ panelId() }}</span>
+  </button>
   <ng-container *ngFor="let filter of filters()">
     <button *ngIf="!filter.hidden && !!count(filter.state)"
             class="filter"
             [ngClass]="filter.state"
             [class.visible]="filter.visible"
-            (click)="onFilter(filter)"><span>{{count(filter.state)}} {{filter.state | uppercase}}</span></button>
+            [class.panel-id]="filter.panelId"
+            (click)="onFilter(filter)">
+      <span *ngIf="!filter.panelId">{{count(filter.state)}} {{filter.state | uppercase}}</span>
+      <span *ngIf="filter.panelId">{{ panelId() }}</span>
+    </button>
   </ng-container>
   <btn-clear *ngIf="!!countRemoved() "
              (click)="onClearRemovedTasks()"

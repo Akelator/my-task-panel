@@ -11,7 +11,8 @@
   overflow: hidden;
 
   new-task,
-  edit-task {
+  edit-task,
+  edit-panel-id {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -77,6 +78,7 @@ button.filter {
     text-overflow: ellipsis;
   }
 
+
   &.todo {
     background-color: var(--todo-0);
     border: 1px solid var(--new-1) !important;
@@ -140,6 +142,17 @@ button.filter {
     &.remove {
       color: var(--remove-1) !important;
       border: 1px solid var(--remove-0) !important;
+    }
+  }
+
+  &.panel-id {
+    max-width: fit-content;
+    padding: 0 15px;
+    font-weight: 900;
+    width: auto;
+
+    span {
+      color: var(--btn-h-text) !important;
     }
   }
 

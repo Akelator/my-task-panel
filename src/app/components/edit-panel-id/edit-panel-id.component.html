@@ -1,0 +1,16 @@
+<div class="backdrop"
+     [class.active]="active"></div>
+<div class="add-task"
+     [class.active]="active">
+  <label for="name">Panel ID</label>
+  <input [(ngModel)]="panelId"
+         id="name"
+         type="text">
+  <div class="actions">
+    <button class="yes"
+            [class.unvalid]="!valid()"
+            (click)="onEditPanelId()">Save</button>
+    <button class="nop"
+            (click)="onToggle(false)">Close</button>
+  </div>
+</div>

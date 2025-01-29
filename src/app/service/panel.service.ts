@@ -8,6 +8,9 @@ import { PanelTask, STORE_ID, TaskSort, TaskState } from '../model/task.mode';
   providedIn: 'root',
 })
 export class PanelService {
+  private _panelId = new BehaviorSubject<string>('MY_TASKS');
+  panelId: Signal<string>;
+
   private _tasks = new BehaviorSubject<PanelTask[]>([]);
   tasks: Signal<PanelTask[]>;
 
@@ -15,7 +18,9 @@ export class PanelService {
 
   constructor() {
     this.tasks = toSignal(this._tasks.asObservable(), { initialValue: [] });
+    this.panelId = toSignal(this._panelId.asObservable(), { initialValue: 'MY_TASKS' });
     this.retrieveStorage();
+    this.retrievePanelId();
   }
 
   tryAddTask(link: string, name: string): boolean {
@@ -67,6 +72,17 @@ export class PanelService {
     this._tasks.next(tasks);
   }
 
+  updatePanelId(panelId: string): void {
+    localStorage.setItem(`${this.storeId}-panel-id`, panelId);
+    this._panelId.next(panelId);
+  }
+
+  private retrievePanelId(): void {
+    const value: string = localStorage.getItem(`${this.storeId}-panel-id`);
+    if (!value?.length) return;
+    this._panelId.next(value);
+  }
+
   private updateStorage(tasks: PanelTask[]): void {
     const value: string = JSON.stringify(tasks);
     localStorage.setItem(this.storeId, value);
@@ -80,7 +96,7 @@ export class PanelService {
     this._tasks.next(tasks);
   }
 
-  exportJSON(): void {
+  exportJSON(fileName: string): void {
     const tasks: PanelTask[] = this.tasks();
     const data: string = JSON.stringify(tasks, null, 2);
     const blob = new Blob([data], { type: 'data:application/json;charset=utf-8;' });
@@ -88,7 +104,7 @@ export class PanelService {
     if (link.download !== undefined) {
       const url = URL.createObjectURL(blob);
       link.setAttribute('href', url);
-      link.setAttribute('download', 'my-tasks.json');
+      link.setAttribute('download', `${fileName}.json`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
